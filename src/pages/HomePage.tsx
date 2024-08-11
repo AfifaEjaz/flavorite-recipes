@@ -2,12 +2,13 @@ import { useEffect } from "react"
 import { RecipesType, useFavorites, useRecipes, useSearchRecipe } from '../store';
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { GrFavorite } from "react-icons/gr";
 
 const HomePage = () => {
 
     const { error, recipes, fetchResponse, loading } = useRecipes()
     const { searchedRecipe, sError, isloading } = useSearchRecipe()
-    const { favourites, AddFavouriteRecipe } = useFavorites()
+    const { AddFavouriteRecipe } = useFavorites()
  
 
     useEffect(() => {
@@ -16,6 +17,7 @@ const HomePage = () => {
 
     const addToFav = (meal: RecipesType) => {
         AddFavouriteRecipe(meal)
+        alert("Added To Favourites")
     }
 
     return (
@@ -42,7 +44,7 @@ const HomePage = () => {
                 </div>}
 
                 <div className="row">
-                    <h3 className="text-center mt-4">The Best Recipes</h3>
+                    <h3 className="text-center mt-4 text-success">The Best Recipes</h3>
                     {loading && <p>Loading...</p>}
                     {error && <p>{error}</p>}
                     {
@@ -55,7 +57,7 @@ const HomePage = () => {
                                 </Link>
                                 <div className="d-flex justify-content-between mt-2">
                                     <h6 className="text-success">{recipe.strMeal}</h6>
-                                    <Button className="btn btn-success" onClick={() => addToFav(recipe)}>Fav</Button>
+                                    <GrFavorite  style={{cursor: "pointer"}} onClick={() => addToFav(recipe)}/>
                                 </div>
                                 <p className="text-dark">{recipe.strInstructions.substring(100, 0)}...</p>
 
