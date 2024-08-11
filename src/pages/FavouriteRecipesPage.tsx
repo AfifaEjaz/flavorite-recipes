@@ -1,5 +1,4 @@
-import { RecipesType, useFavorites } from "../store";
-
+import { RecipesType } from "../store";
 
 const FavouriteRecipesPage = () => {
 

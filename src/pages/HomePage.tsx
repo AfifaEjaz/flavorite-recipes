@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { RecipesType, useFavorites, useRecipes, useSearchRecipe } from '../store';
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import { GrFavorite } from "react-icons/gr";
 
 const HomePage = () => {
